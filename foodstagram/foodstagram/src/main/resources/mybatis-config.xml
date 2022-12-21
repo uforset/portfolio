@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="cacheEnabled" value="false"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.circle.foodstagram.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.circle.foodstagram.notice.model.vo.Notice" alias="Notice" />
+		<typeAlias type="com.circle.foodstagram.notice.model.vo.NoticeAttach" alias="NoticeAttach" />
+		<typeAlias type="com.circle.foodstagram.notification.model.vo.Notification" alias="Notification" />
+		<typeAlias type="com.circle.foodstagram.food.model.vo.Food" alias="Food" />
+		<typeAlias type="com.circle.foodstagram.common.SearchDate" alias="SearchDate" />
+		<typeAlias type="com.circle.foodstagram.common.Paging" alias="Paging" />
+		<typeAlias type="com.circle.foodstagram.common.SearchPaging" alias="SearchPaging" />
+		<typeAlias type="com.circle.foodstagram.common.FileDownloadView" alias="FileDownloadView" />
+		<typeAlias type="com.circle.foodstagram.qna.model.vo.Question" alias="Question" />
+		<typeAlias type="com.circle.foodstagram.qna.model.vo.Answer" alias="Answer" />
+		<typeAlias type="com.circle.foodstagram.common.attach.model.vo.Attach" alias="Attach" />
+		<typeAlias type="com.circle.foodstagram.chat.model.vo.ChatMessage" alias="ChatMessage" />
+		<typeAlias type="com.circle.foodstagram.chat.model.vo.ChatRoom" alias="ChatRoom" />
+		<typeAlias type="com.circle.foodstagram.chat.model.vo.ChatRoomJoin" alias="ChatRoomJoin" />
+		<typeAlias type="com.circle.foodstagram.board.model.vo.Board" alias="Board" />
+		<typeAlias type="com.circle.foodstagram.board.model.vo.BoardAttach" alias="BoardAttach" />
+		<typeAlias type="com.circle.foodstagram.board.model.vo.BoardReply" alias="BoardReply" />
+		<typeAlias type="com.circle.foodstagram.member.model.vo.GoogleVO" alias="GoogleVO"/>
+		<typeAlias type="com.circle.foodstagram.member.model.vo.NaverVO" alias="NaverVO"/>
+		<typeAlias type="com.circle.foodstagram.member.model.vo.KakaoVO" alias="KakaoVO"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/notice-mapper.xml" />
+		<mapper resource="mappers/noticeAttach-mapper.xml" />
+		<mapper resource="mappers/notification-mapper.xml" />
+		<mapper resource="mappers/food-mapper.xml" />
+		<mapper resource="mappers/question-mapper.xml" />
+		<mapper resource="mappers/answer-mapper.xml" />
+		<mapper resource="mappers/attach-mapper.xml" />
+		<mapper resource="mappers/chatMessage-mapper.xml" />
+		<mapper resource="mappers/chatRoom-mapper.xml" />
+		<mapper resource="mappers/chatRoomJoin-mapper.xml" />
+		<mapper resource="mappers/boardattach-mapper.xml" />
+		<mapper resource="mappers/boardreply-mapper.xml" />
+		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/sns-mapper.xml" />
+	</mappers>
+</configuration>

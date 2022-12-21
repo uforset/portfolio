@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chatMessageMapper">
+
+	<resultMap type="ChatMessage" id="resultChatMessage">
+		<id column="cm_no" property="cm_no" />
+		<result column="userid" property="userid" />
+		<result column="username" property="username" />
+		<result column="chat_room_id" property="chat_room_id" />
+		<result column="message" property="message" />
+		<result column="create_date" property="create_date" />
+	</resultMap>
+
+	<insert id="insertChatMessage" parameterType="ChatMessage">
+		insert into chat_message(cm_no,
+								userid,
+								username,
+								chat_room_id,
+								message,
+								create_date)
+				values(default,
+						#{userid},
+						#{username},
+						#{chat_room_id},
+						#{message},
+						#{create_date})
+						<selectKey keyProperty="cm_no" resultType="int" order="AFTER">
+         							select max(cm_no) from chat_message
+         							where userid = #{userid} and chat_room_id = #{chat_room_id}
+      					</selectKey>
+	</insert>
+	
+	<select id="getChatRoomMessage" parameterType="string" resultMap="resultChatMessage">
+		select * from chat_message
+		where chat_room_id = #{chat_room_id}
+		order by create_date desc, cm_no desc
+		offset 0 rows fetch first 20 rows with ties
+	</select>
+	
+	<select id="selectRoomMessageCount" parameterType="string" resultType="_int">
+		select count(*)
+		from chat_message
+		where chat_room_id = #{chat_room_id}
+	</select>
+	
+	<select id="selectRoomMessageList" parameterType="Map" resultMap="resultChatMessage">
+	select * 
+	from (select ROWNUM RNUM, c.*
+		  from (select * 
+		  		from chat_message 
+		  		where chat_room_id = #{chat_room_id}
+		  		order by create_date DESC) c)
+	where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getChatMessageRowLimitingClausePaging" parameterType="Map" resultMap="resultChatMessage">
+		select *
+		from chat_message
+		where chat_room_id = #{id}
+		order by create_date desc, cm_no desc
+		OFFSET (#{page}-1) * #{size} ROWS FETCH FIRST #{size} ROWS ONLY
+	</select>
+	
+	<delete id="deleteMessage" parameterType="int">
+		delete from chat_message where cm_no = #{cm_no}
+	</delete>
+</mapper>
