@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<div id="wrap">
+  <form method="get" action="{% url 'corona_visual:visual_detail' %}">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <div>
+                        <strong>{{ field.label }}</strong>
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <input type="search" name="keyword" size=50 autocomplete="on" value="{{ keyword|default_if_none:'' }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit">Submit</button>
+
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container my-3">
+    <form method="post" action="{% url 'members:login' %}">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="mb-3 white-important">
+                로그인
+            </legend>
+            {{ form }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-primary" type="submit">로그인</button>
+        </div>
+    </form>
+
+        <div class="links">
+            <a href="memberId">아이디 찾기</a> | <a href="memberPw">비밀번호 찾기</a>
+
+        </div>
+
+    <div class="pt-5">
+        <form method="post" action="{% url 'members:signup' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <small class="text-muted">
+                계정이 없으신가요?
+                <button type="submit" class="btn btn-primary" autofocus required>회원가입</button>
+            </small>
+        </form>
+    </div>
+</div>
+{% endblock content %}

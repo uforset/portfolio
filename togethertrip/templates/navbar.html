@@ -1,0 +1,29 @@
+<style>
+* {list-style:none; text-decoration:none;}
+ul {display:flex; background-color:white; opacity:0.85; padding:15px 0;}
+li > a{ margin-right:20px; color:black; font-weight:900; font-size:30px; transition: color ease-in 0.6s;}
+li>a::after {content:'|';padding-left:20px; }
+li > a:hover {color: #EE6B6B; text-decoration:underline;}
+</style>
+<nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+    <div class="container my-3">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="nav-item">
+                    <ul>
+                        <li style="margin-left:100px;"><a class="navbar-brand" href="/">HOME</a></li>
+                        <li><a class="nav-link active987" href="/ttnotice_list/">공지사항 </a></li>
+                        <li><a class="nav-link active987" href="/ttmembers/signup/">회원가입 </a></li>
+                        <li><a class="nav-link active987" href="/common/coronalogin/">로그인</a></li>
+                        {% if user.is_active %}
+                        <li><a class="nav-link active987" href="/ttmembers/logout/">로그아웃</a></li>
+                    </ul>
+                    {% else %}
+                    {% if not user.is_active %}
+                    {% endif %}
+                </div>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

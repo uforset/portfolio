@@ -1,0 +1,10 @@
+<h1>
+    출력을 확인하는 용도의 html입니다
+</h1>
+{% if news_test %}
+    {% for i in news_test %}
+    <p>{{i.NEWS_TITLE}}<br></p>
+    {% endfor %}
+{% else %}
+    그런거 없습니다.
+{% endif %}

@@ -1,0 +1,96 @@
+{% load static %}
+<!--공지사항의 세부사항을 보여주는 페이지 입니다.-->
+<body lang="ko">
+<!--블랙컨텐츠넣어줘야함-->
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>notice_detail</title>
+</head>
+<body>
+<div class="container my-3">
+    <!-- 오류 message 표시 -->
+    {% if messages %}
+    <div class="alert alert-danger my-3" role="alert">
+        {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul>
+            <li>{{ message.message }}</li>
+        </ul>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <h2>공지사항</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tbody>
+            <tr>
+                <th>제목</th>
+                <td>{{ notice_list.NOTICE_TITLE }}</td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <!--        <td>{{ notice_list.NOTICE_WRITER }}</td>-->
+                <td>admin</td>
+            </tr>
+            <tr>
+                <th>작성일</th>
+                <td>{{ notice_list.NOTICE_DATE }}</td>
+            </tr>
+            <tr>
+                <th>조회수</th>
+                <td>{{ notice_list.READCOUNT }}</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>{{ notice_list.NOTICE_CONTENT }}</td>
+            </tr>
+            <br>
+            <!--    <button class="notice_list_title"><a href="/ttnotice_list/notice_title">뒤로가기</a> </button>-->
+            <button class="notice_list_title"><a href="/ttnotice_list/">뒤로가기</a></button>
+        </table>
+    </form>
+    <button>
+        <a onclick="javascript:btn()">수정</a>
+    </button>
+    <button>
+        <!--                삭제 수정-->
+        <a onclick="btn2()">삭제</a>
+
+    </button>
+    </tbody>
+</div>
+{% block script %}
+<script type='text/javascript'>
+function btn(){
+    id = prompt('관리자 권한 페이지 입니다. 아이디를 입력하세요');
+    if(id==1234){
+        alert('관리자 입니다.');
+        window.location.href = "{% url 'notice_list:notice_edit' notice_list.id %}"
+    }
+    else {
+        alert('관리자가 아닙니다. 수정을 할 수 없습니다.');
+        return False
+    }
+}
+
+
+<!-- 삭제 수정 -->
+function btn2(){
+id = prompt('관리자 권한 페이지 입니다. 아이디를 입력하세요');
+    if(id==1234){
+        alert('삭제되었습니다. {{notice_list.id}}');
+        window.location.href = "{% url 'notice_list:notice_delete' notice_list.id %}"
+    }
+    else {
+        alert('관리자가 아닙니다. 삭제할 수 없습니다.');
+    }
+}
+
+
+
+
+</script>
+{% endblock %}
+</body>

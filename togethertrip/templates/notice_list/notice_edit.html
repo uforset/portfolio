@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<!--관리자 전용 공지사항 등록 하기 위한 페이지 입니다.-->
+<!--첨부파일 경로에 a넣어서 파일경로 넣고 dowunload 넣어줘서 파일이 설정될 경로에 다운받을수있게 하기-->
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>notice_edit</title>
+
+</head>
+<body>
+<h2>수정하는 곳입니다.</h2>
+<table>
+    <tbody>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <div>
+                        <strong>{{ field.label }}</strong>
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary" class="btn btn-primary">수정</button>
+    </form>
+    <a href="/ttnotice_list/notice_page"><button class="btn btn-primary" class="btn btn-primary">취소</button></a>
+    </tbody>
+</table>
+</html>

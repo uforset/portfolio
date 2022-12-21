@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<!--관리자 전용 공지사항 등록 하기 위한 페이지 입니다.-->
+<!--첨부파일 경로에 a넣어서 파일경로 넣고 dowunload 넣어줘서 파일이 설정될 경로에 다운받을수있게 하기-->
+<html lang="ko">
+<head>
+    <!--    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
+    <meta charset="UTF-8">
+    <title>notice_input</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+</head>
+<h2>공지사항</h2>
+<table>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <div>
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {{ form.as_p }}
+        <button type="button" ><a href="./diagram.jpg" download="#">파일첨부하기</a></button><br>
+        <br>
+        <button type="submit" class="btn btn-primary">등록</button>
+
+    </form>
+    <a href="/ttnotice_list/notice_page"><button class="btn btn-primary">취소</button></a>
+</table>
+</html>

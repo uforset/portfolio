@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<div align="center"><img src="/static/image/crawling/corona/{{day}}.png"></div>
+{% if trip %}
+<div style="border:1px solid red;" align="center"><b><h3>국가명 : {{trip.COUNTRY_NAME}}</h3></b>
+        <font size="3" color="red"><li>여행 경보 : {{trip.TRAVEL_WARNING}}</li></font>
+        <li>격리조치관련지침 : {{trip.QUARANTINE}}</li>
+        <li>백신접종 : {{trip.VACCINE}}</li>
+        <li>코로나진단검사 : {{trip.CORONA_TEST}}</li>
+        <li>서류및 비자 : {{trip.DOCUMENT_VISA}}</li>
+        <li>여행/의료보험 : {{trip.TRAVEL_INSURANCE}}</li>
+        <li>마스크 : {{trip.MASK}}</li>
+    </div>
+    <br>
+    <div style="border:1px solid red;" align="center">전체 확진자 : {{corona.ALL_CONFIRMED_CASES}}
+       <br>전체 사망자 : {{corona.DEAD_PERSON}}
+       <br>치명률 : {{corona.FATALITY_RATE}}
+       <br>날짜 : {{day}}
+    </div>
+    <br>
+{% else %}
+    <h1> 없음 </h1>
+{% endif %}
+{% endblock %}

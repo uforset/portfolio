@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="main_body2">
+<div id="body-wrapper">
+    <br><br><br><br><br>
+    <h1 id="main_text1">여행지를 위한 정보를 모았다</h1>
+    <br>
+    <h1 id="main_text2">TOGETHER<br>TRIP.</h1>
+    <div id=body-content align="center">
+        <table class="main_table">
+            <th><a href="{% url 'corona_visual:search' %}">
+                <button class="trip_button" type="button">여행지 코로나 상황<img src="{% static 'image/trip_button.png' %}">
+                </button>
+            </a>
+            </th>
+
+            <!--            <th><a href="{% url 'common:naverlogin' %}"><button class="naver_button" type="button" >네이버 뉴스<br><img src="{% static 'image/naver_button.png' %}"></button></th>-->
+            <th><a href="{% url 'news_visual:search' %}">
+                <button class="naver_button" type="button">네이버 뉴스<br><img src="{% static 'image/naver_button.png' %}">
+                </button>
+            </a>
+            </th>
+
+        </table>
+    </div>
+    <footer></footer>
+</div>
+</body>
+{% endblock %}

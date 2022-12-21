@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper" style="text-align: center;">
+    <h1 style="color:red;">--------------회원가입--------------</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <text>이름을 적어주세요 : {{form.username}}</text><br>
+        <text>비밀번호를 적어주세요 : {{form.password1}}</text><br>
+        <text>비밀번호를 확인해주세요 : {{form.password2}}</text><br>
+        <text>닉네임을 적어주세요 : {{form.nickname}}</text><br>
+        <text>대학교를 적어주세요 : {{form.university}}</text><br>
+        <text>거주 장소를 적어주세요 : {{form.location}}</text><br>
+        <input type="submit" class="btn btn-primary" value="Sign Up">
+    </form>
+</div>
+{% endblock %}

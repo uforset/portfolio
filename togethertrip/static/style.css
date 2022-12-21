@@ -1,0 +1,94 @@
+/*
+프로젝트에서 만든것
+*/
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+#main_text1{
+    text-align: center;
+    font-weight: bolder;
+    color : rgba(255,255,255,1);
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 3px black;
+    opacity:0.9
+
+}
+#main_text2{
+    color : #EE6B6B;
+    text-align: center;
+    font-weight: 900;
+    font-size: 40pt;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 10px;
+}
+.trip_button{
+    border-radius: 50px;
+    background-color: rgba(255,255,255,0.5);
+    font-size: 20pt;
+    font-weight: 300;
+    width: 300px;
+    height: 250px;
+    transition: background-color ease-in 0.3s;
+}
+.trip_button:hover {
+    background-color: rgba(255,255,255,0.8);
+}
+
+.naver_button{
+    background-color : rgba(255,255,255,0.5);
+    border-radius: 50px;
+    font-size: 20pt;
+    font-weight: 300;
+    align: center;
+    width: 300px;
+    height: 250px;
+    transition: background-color ease-in 0.3s;
+
+}
+.naver_button:hover {
+    background-color: rgba(255,255,255,0.8);
+}
+.main_table{
+    width: 500px;
+    height: 300px;
+}
+.center_line{
+    background-image: url("./image/center_line.png");
+}
+
+.main_body2{
+    background-image: url("./image/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#body-wrapper{
+min-height: 100%;
+position: relative;
+}
+#body-content{
+    margin-top: 64px;
+}
+footer{
+    width: 100%;
+    height: 18%;
+    position: absolute;
+    bottom: -10%;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url("./image/footer.png");
+    background-size: 100%;
+}
+
+#wrap{
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}

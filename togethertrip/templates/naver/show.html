@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+
+<div align="center">
+{% if news %}
+    <img src="/static/image/crawling/naver/{{link}}.png">
+    {{keyword}}
+    {% for i in news %}
+    <p><li><a href = "{{i.NEWS_URL}}">{{i.NEWS_TITLE}}</a><br></li></p>
+    {% endfor %}
+{% else %}
+    <h1> 없음 </h1>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+      {{user.location}}에 사는 {{user.university}}다니는 {{user.nickname}} 안녕하세요!
+{% else %}
+       아무것도 없음.
+{% endif %}
+</body>
+</html>
